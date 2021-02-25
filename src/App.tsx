@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 
 import coinMarket from "./api/coinMarket";
-import { Crypto } from "./components/Crypto";
+import { Crypto } from "./components/crypto/Crypto";
 import { Container } from "semantic-ui-react";
+import { Loading } from "./components/loading/Loading";
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
   const [results, setResults] = useState([]);
 
   useEffect(() => {
     getCurrencies();
+    setInterval(() => getCurrencies(), 10000);
   }, []);
 
   // getCurrencies gets a list of currencies from the API, max 50 per page
@@ -22,14 +25,19 @@ const App = () => {
         interval: "1d",
       },
     });
+    setLoading(false);
     setResults(data);
   };
 
   return (
     <div>
-      <Container>
-        <Crypto results={results} />
-      </Container>
+      {loading ? (
+        <Loading text="loading" />
+      ) : (
+        <Container>
+          <Crypto results={results} />
+        </Container>
+      )}
     </div>
   );
 };
