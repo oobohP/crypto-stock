@@ -1,4 +1,6 @@
 import React from "react";
+import "./Crypto.css";
+import NumberFormat from "react-number-format";
 import { Table } from "semantic-ui-react";
 
 interface ICryptoList {
@@ -24,27 +26,27 @@ export const Crypto = (props: ICryptoList) => {
       <Table.Row>
         <Table.Cell>{result.rank}</Table.Cell>
         <Table.Cell>
-          <img
-            style={{
-              maxWidth: "40px",
-              maxHeight: "40px",
-              marginRight: "7px",
-              verticalAlign: "middle",
-            }}
-            src={result.logo_url}
-            alt={result.name}
-          />{" "}
-          {result.name} {result.symbol}
+          <img src={result.logo_url} alt={result.name} /> {result.name}{" "}
+          <span className="symbolColor">{result.symbol}</span>
         </Table.Cell>
-        <Table.Cell>{result.price}</Table.Cell>
-        <Table.Cell>{result.circulating_supply}</Table.Cell>
+        <Table.Cell>
+          <NumberFormat
+            value={result.price}
+            displayType={"text"}
+            thousandSeparator={true}
+            decimalScale={2}
+            prefix={"$"}
+          />
+        </Table.Cell>
+        <Table.Cell>
+          {result.circulating_supply} {result.symbol}
+        </Table.Cell>
       </Table.Row>
     );
   });
 
-  // return <div>{renderedProps}</div>;
   return (
-    <div>
+    <div className="tableStyles">
       <Table singleLine>
         <Table.Header>
           <Table.Row>
