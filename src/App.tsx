@@ -1,10 +1,14 @@
 import React from "react";
-import { Counter } from "./components/Counter";
+import { Crypto } from "./components/Crypto";
+
+import { Container } from "semantic-ui-react";
 
 const App: React.FC = () => {
   return (
     <div>
-      <Counter />
+      <Container>
+        <Crypto />
+      </Container>
     </div>
   );
 };
