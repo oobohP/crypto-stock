@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from "react";
-import coinMarket from "../api/coinMarket";
+import React from "react";
+import { Table } from "semantic-ui-react";
 
-interface CryptoTicker {
+interface ICryptoList {
+  results: ICryptoItem[];
+}
+
+interface ICryptoItem {
   currency: string;
   id: string;
   status: string;
@@ -14,35 +18,45 @@ interface CryptoTicker {
   rank: number;
 }
 
-export const Crypto: React.FC = () => {
-  const [results, setResults] = useState<CryptoTicker[] | undefined>();
-
-  useEffect(() => {
-    const getCurrencies = async () => {
-      const { data } = await coinMarket.get("/currencies/ticker?per-page=50", {
-        params: {
-          key: "to be replaced with a backend server",
-          page: 1,
-          sort: "rank",
-          status: "active",
-          interval: "1d",
-        },
-      });
-      console.log(data);
-      setResults(data);
-    };
-
-    // invoke helper function
-    getCurrencies();
-  }, []);
-
-  const renderedResults = results?.map((result) => {
+export const Crypto = (props: ICryptoList) => {
+  const renderedProps = props.results.map((result) => {
     return (
-      <div>
-        {result.name} : {result.price}
-      </div>
+      <Table.Row>
+        <Table.Cell>{result.rank}</Table.Cell>
+        <Table.Cell>
+          <img
+            style={{
+              maxWidth: "40px",
+              maxHeight: "40px",
+              marginRight: "7px",
+              verticalAlign: "middle",
+            }}
+            src={result.logo_url}
+            alt={result.name}
+          />{" "}
+          {result.name} {result.symbol}
+        </Table.Cell>
+        <Table.Cell>{result.price}</Table.Cell>
+        <Table.Cell>{result.circulating_supply}</Table.Cell>
+      </Table.Row>
     );
   });
 
-  return <div>{renderedResults}</div>;
+  // return <div>{renderedProps}</div>;
+  return (
+    <div>
+      <Table singleLine>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>#</Table.HeaderCell>
+            <Table.HeaderCell>Name</Table.HeaderCell>
+            <Table.HeaderCell>Price</Table.HeaderCell>
+            <Table.HeaderCell>Circulating Supply</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+
+        <Table.Body>{renderedProps}</Table.Body>
+      </Table>
+    </div>
+  );
 };
