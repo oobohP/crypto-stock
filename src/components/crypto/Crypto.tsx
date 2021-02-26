@@ -23,7 +23,7 @@ interface ICryptoItem {
 export const Crypto = (props: ICryptoList) => {
   const renderedProps = props.results.map((result) => {
     return (
-      <Table.Row>
+      <Table.Row key={result.id}>
         <Table.Cell>{result.rank}</Table.Cell>
         <Table.Cell>
           <img src={result.logo_url} alt={result.name} /> {result.name}{" "}

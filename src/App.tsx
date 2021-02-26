@@ -35,6 +35,9 @@ const App = () => {
         <Loading text="loading" />
       ) : (
         <Container>
+          <a href="https://nomics.com" target="none">
+            Crypto Market Cap & Pricing Data Provided By Nomics
+          </a>
           <Crypto results={results} />
         </Container>
       )}
