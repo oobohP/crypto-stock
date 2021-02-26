@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/crypto-stock/static/css/main.6fc4b139.chunk.css",
-    "main.js": "/crypto-stock/static/js/main.3b6598c7.chunk.js",
-    "main.js.map": "/crypto-stock/static/js/main.3b6598c7.chunk.js.map",
+    "main.js": "/crypto-stock/static/js/main.e569f70b.chunk.js",
+    "main.js.map": "/crypto-stock/static/js/main.e569f70b.chunk.js.map",
     "runtime-main.js": "/crypto-stock/static/js/runtime-main.0e42392c.js",
     "runtime-main.js.map": "/crypto-stock/static/js/runtime-main.0e42392c.js.map",
     "static/css/2.bfd597db.chunk.css": "/crypto-stock/static/css/2.bfd597db.chunk.css",
@@ -19,6 +19,6 @@
     "static/css/2.bfd597db.chunk.css",
     "static/js/2.b6cd7440.chunk.js",
     "static/css/main.6fc4b139.chunk.css",
-    "static/js/main.3b6598c7.chunk.js"
+    "static/js/main.e569f70b.chunk.js"
   ]
 }
