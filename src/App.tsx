@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import coinMarket from "./api/coinMarket";
 import { Crypto } from "./components/crypto/Crypto";
@@ -32,13 +32,16 @@ const App = () => {
   return (
     <div>
       {loading ? (
-        <Loading text="loading" />
+        <Loading text="Loading" />
       ) : (
         <Container>
-          <a href="https://nomics.com" target="none">
+          <Crypto results={results} />
+          <a
+            className="ui center aligned grid"
+            href="https://nomics.com"
+            target="none">
             Crypto Market Cap & Pricing Data Provided By Nomics
           </a>
-          <Crypto results={results} />
         </Container>
       )}
     </div>

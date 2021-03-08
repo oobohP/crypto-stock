@@ -5,7 +5,7 @@ interface LoadingProps {
   text: string;
 }
 
-export const Loading = (text: LoadingProps) => {
+export const Loading = ({ text }: LoadingProps) => {
   return (
     <div>
       <Dimmer active inverted>
